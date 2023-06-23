@@ -14,11 +14,11 @@ namespace Optimum.Api.Configurations;
 
 public class EndpointApiConfigure : IEndpointConfigure
 {
-    private readonly WebApplication _app;
+    public  WebApplication WebApplication { get; set; }
 
-    public EndpointApiConfigure(WebApplication app)
+    public EndpointApiConfigure(WebApplication webApplication)
     {
-        _app = app;
+        WebApplication = webApplication;
     }
 
 
@@ -36,14 +36,14 @@ public class EndpointApiConfigure : IEndpointConfigure
 
     public Task MapGet(string pattern, RequestDelegate action, string[]? roles = null, string[]? policies = null)
     {
-        _app.MapGet(pattern, action);
+        WebApplication.MapGet(pattern, action);
         return Task.CompletedTask;
     }
 
     public Task MapPost<TRequest, TResponse>(string pattern , string[]? roles = null, string[]? policies = null) where TRequest : IApiRequest<TResponse>
     {
         var handler = GetRequestHandlerService<TRequest, TResponse>();
-        _app.MapPost(pattern, async context =>
+        WebApplication.MapPost(pattern, async context =>
         {
             var requestContext = await BuildReqeustContext<TRequest>(context);
             var response = await handler.HandleAsync(requestContext);
@@ -55,7 +55,7 @@ public class EndpointApiConfigure : IEndpointConfigure
     public Task MapDelete<TRequest, TResponse>(string pattern , string[]? roles = null, string[]? policies = null) where TRequest : IApiRequest<TResponse>
     {
         var handler = GetRequestHandlerService<TRequest, TResponse>();
-        _app.MapDelete(pattern, async context =>
+        WebApplication.MapDelete(pattern, async context =>
         {
             var requestContext = await BuildReqeustContext<TRequest>(context);
             var response = await handler.HandleAsync(requestContext);
@@ -67,7 +67,7 @@ public class EndpointApiConfigure : IEndpointConfigure
     public  Task MapPut<TRequest, TResponse>(string pattern , string[]? roles = null, string[]? policies = null) where TRequest : IApiRequest<TResponse>
     {
         var handler = GetRequestHandlerService<TRequest, TResponse>();
-        _app.MapPut(pattern, async context =>
+        WebApplication.MapPut(pattern, async context =>
         {
             var requestContext = await BuildReqeustContext<TRequest>(context);
             var response = await handler.HandleAsync(requestContext);
@@ -88,7 +88,7 @@ public class EndpointApiConfigure : IEndpointConfigure
                                  && t.GetInterfaces()
                                      .Any(i => i.GetGenericArguments().Any(arg => arg == tResponse)));
 
-        var handler = _app.Services.GetRequiredService<IApiRequestHandler<TRequest, TResponse>>();
+        var handler = WebApplication.Services.GetRequiredService<IApiRequestHandler<TRequest, TResponse>>();
         return handler;
     }
     

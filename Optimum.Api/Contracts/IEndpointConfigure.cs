@@ -5,6 +5,7 @@ namespace Optimum.Api.Contracts;
 
 public interface IEndpointConfigure
 {
+    public WebApplication WebApplication { get; set; }
     Task MapGet<TRequest, TResponse>(string pattern, string[]? roles = null, string[]? policies = null)
         where TRequest : IApiRequest<TResponse>;
 

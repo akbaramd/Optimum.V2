@@ -1,6 +1,8 @@
 using Optimum;
 using Optimum.Api;
+using Optimum.Api.CQRS;
 using Optimum.CQRS;
+using Optimum.Example.Service.Commands;
 using Optimum.Example.Service.Requests;
 using Serilog;
 
@@ -22,6 +24,8 @@ app.UseOptimum(configure =>
     {
         await endpoints.MapGet<ServiceHealthRequest, ServiceHealthResponse>("/health");
         await endpoints.MapPost<ServiceHealthRequest, ServiceHealthResponse>("/health-post/{status}");
+
+        await endpoints.MapPostCommand<SendLogCommand>("send");
     });
 });
 

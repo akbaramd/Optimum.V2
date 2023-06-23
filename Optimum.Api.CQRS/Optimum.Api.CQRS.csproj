@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Optimum.Api\Optimum.Api.csproj" />
+      <ProjectReference Include="..\Optimum.CQRS\Optimum.CQRS.csproj" />
+    </ItemGroup>
+
 </Project>
