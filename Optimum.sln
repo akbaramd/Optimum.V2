@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optimum.WebApi.CQRS", "Opti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optimum.WebApi.Swagger", "Optimum.WebApi.Swagger\Optimum.WebApi.Swagger.csproj", "{20ABA2D3-71EA-4B0E-AD5C-2F694632CDFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optimum.Docs.Swagger", "Optimum.Docs.Swagger\Optimum.Docs.Swagger.csproj", "{6637A043-3258-49A1-81D3-FD23A70A671D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optimum.Persistence.Redis", "Optimum.Persistence.Redis\Optimum.Persistence.Redis.csproj", "{269530A4-EF78-4ED0-B111-277BE05C9EA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{20ABA2D3-71EA-4B0E-AD5C-2F694632CDFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20ABA2D3-71EA-4B0E-AD5C-2F694632CDFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20ABA2D3-71EA-4B0E-AD5C-2F694632CDFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6637A043-3258-49A1-81D3-FD23A70A671D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6637A043-3258-49A1-81D3-FD23A70A671D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6637A043-3258-49A1-81D3-FD23A70A671D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6637A043-3258-49A1-81D3-FD23A70A671D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269530A4-EF78-4ED0-B111-277BE05C9EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269530A4-EF78-4ED0-B111-277BE05C9EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269530A4-EF78-4ED0-B111-277BE05C9EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269530A4-EF78-4ED0-B111-277BE05C9EA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{42B8C727-07BA-483C-A423-64B8100265B9} = {A980B1C7-2288-4667-983A-B7311C3374BC}

@@ -10,8 +10,4 @@
       <ProjectReference Include="..\Optimum\Optimum.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Handlers\" />
-    </ItemGroup>
-
 </Project>

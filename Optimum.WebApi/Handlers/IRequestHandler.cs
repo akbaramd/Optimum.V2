@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata;
-using Optimum.WebApi.Contracts;
+﻿using Optimum.WebApi.Contracts;
 
 namespace Optimum.WebApi.Handlers;
 

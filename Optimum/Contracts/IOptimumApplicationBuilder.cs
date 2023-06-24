@@ -2,7 +2,10 @@
 
 namespace Optimum.Contracts;
 
-public interface IOptimumAppBuilder
+public interface IOptimumApplicationBuilder
 {
     public WebApplication Application { get;  }
+
+    public void Run();
+    public Task RunAsync();
 }

@@ -4,14 +4,12 @@ using Optimum.Contracts;
 using Optimum.WebApi.Configurations;
 using Optimum.WebApi.Contracts;
 using Optimum.WebApi.Handlers;
-using Serilog;
-using Serilog.Events;
 
 namespace Optimum.WebApi;
 
 public static class Extensions
 {
-    public static void AddWebApi(this IOptimumBuilder builder)
+    public static IOptimumBuilder AddWebApi(this IOptimumBuilder builder)
     {
         builder.Services.Scan(scan =>
         {
@@ -25,9 +23,17 @@ public static class Extensions
         });
 
         builder.Services.AddAuthorization();
+        
+        builder.AddBuildAction(c =>
+        {
+            Console.WriteLine("sssssssssss");
+        });
+        
+        Console.WriteLine("aaaaaaa");
+        return builder;
     }
     
-    public static void UseEndpoints(this IOptimumAppBuilder builder , Action<IEndpointConfigure> configure , bool authorazation = false)
+    public static IOptimumApplicationBuilder UseEndpoints(this IOptimumApplicationBuilder builder , Action<IEndpointConfigure> configure , bool authorazation = false)
     {
         builder.Application.UseRouting();
         builder.Application.UseEndpoints(endpointBuilder =>
@@ -39,6 +45,8 @@ public static class Extensions
         {
             builder.Application.UseAuthorization();
         }
+        Console.WriteLine("eeeeeeeeeeeeeeee");
+        return builder;
     }
     
     

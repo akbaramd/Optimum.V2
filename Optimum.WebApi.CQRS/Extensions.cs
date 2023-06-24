@@ -1,15 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Optimum.WebApi.Configurations;
-using Optimum.WebApi.Contracts;
-using Optimum.WebApi.Handlers;
-using Optimum.CQRS.Contracts;
-using Serilog;
-using Serilog.Events;
-
-namespace Optimum.WebApi.CQRS;
+﻿namespace Optimum.WebApi.CQRS;
 
 public static class Extensions
 {

@@ -7,7 +7,7 @@ namespace Optimum.CQRS;
 
 public static class Extensions
 {
-    public static void AddCommandHandlers(this IOptimumBuilder builder)
+    public static IOptimumBuilder AddCommandHandlers(this IOptimumBuilder builder)
     {
         builder.Services.Scan(scan =>
         {
@@ -19,9 +19,10 @@ public static class Extensions
                 }).AsImplementedInterfaces()
                 .WithTransientLifetime();
         });
+        return builder;
 
     }
-    public static void AddQueryHandlers(this IOptimumBuilder builder)
+    public static IOptimumBuilder AddQueryHandlers(this IOptimumBuilder builder)
     {
         builder.Services.Scan(scan =>
         {
@@ -33,9 +34,9 @@ public static class Extensions
                 }).AsImplementedInterfaces()
                 .WithTransientLifetime();
         });
-
+        return builder;
     }
-    public static void AddEventHandlers(this IOptimumBuilder builder)
+    public static IOptimumBuilder AddEventHandlers(this IOptimumBuilder builder)
     {
         builder.Services.Scan(scan =>
         {
@@ -47,19 +48,22 @@ public static class Extensions
                 }).AsImplementedInterfaces()
                 .WithTransientLifetime();
         });
-
+        return builder;
     }
-    public static void AddInMemoryCommandDispatchers(this IOptimumBuilder builder)
+    public static IOptimumBuilder AddInMemoryCommandDispatchers(this IOptimumBuilder builder)
     {
         builder.Services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
+        return builder;
     }
-    public static void AddInMemoryQueryDispatchers(this IOptimumBuilder builder)
+    public static IOptimumBuilder AddInMemoryQueryDispatchers(this IOptimumBuilder builder)
     {
         builder.Services.AddSingleton<IQueryDispatcher, QueryDispatcher>();
+        return builder;
     }
-    public static void AddInMemoryEventDispatchers(this IOptimumBuilder builder)
+    public static IOptimumBuilder AddInMemoryEventDispatchers(this IOptimumBuilder builder)
     {
         builder.Services.AddSingleton<IEventDispatcher, EventDispatcher>();
+        return builder;
     }
 
   

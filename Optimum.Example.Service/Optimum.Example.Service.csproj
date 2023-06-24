@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Optimum.Docs.Swagger\Optimum.Docs.Swagger.csproj" />
       <ProjectReference Include="..\Optimum.WebApi.CQRS\Optimum.WebApi.CQRS.csproj" />
       <ProjectReference Include="..\Optimum.WebApi\Optimum.WebApi.csproj" />
       <ProjectReference Include="..\Optimum.CQRS\Optimum.CQRS.csproj" />
