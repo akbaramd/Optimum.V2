@@ -1,18 +1,15 @@
-﻿using Optimum.Api;
-using Optimum.Api.Attributes;
-using Optimum.Api.Contracts;
-using Optimum.Api.Handlers;
+﻿using Optimum.WebApi;
+using Optimum.WebApi.Contracts;
+using Optimum.WebApi.Handlers;
 
 namespace Optimum.Example.Service.Requests;
 
-[GetRequest("/health")]
-[PostRequest("/health-post")]
-public class ServiceHealthRequest : IApiRequest<ServiceHealthResponse>
+public class ServiceHealthRequest : IRequest<ServiceHealthResponse>
 {
     public string ServiceName { get; set; }
 }
 
-public class ServiceHealthRequestHandler : IApiRequestHandler<ServiceHealthRequest,ServiceHealthResponse>
+public class ServiceHealthRequestHandler : IRequestHandler<ServiceHealthRequest,ServiceHealthResponse>
 {
     public Task<ServiceHealthResponse> HandleAsync(RequestContext<ServiceHealthRequest> context, CancellationToken cancellationToken = default)
     {

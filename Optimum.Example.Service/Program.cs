@@ -1,6 +1,6 @@
 using Optimum;
-using Optimum.Api;
-using Optimum.Api.CQRS;
+using Optimum.WebApi;
+using Optimum.WebApi.CQRS;
 using Optimum.CQRS;
 using Optimum.Example.Service.Commands;
 using Optimum.Example.Service.Requests;
@@ -12,21 +12,22 @@ builder.Logging.ClearProviders().AddSerilog();
 
 builder.Services.AddOptimum("example-service", "Example Service", configure =>
 {
-    configure.AddCQRS();
-    configure.AddApiEndpoints();
+    configure.AddWebApi();
+    configure.AddCommandHandlers();
+    configure.AddEventHandlers();
+    configure.AddQueryHandlers();
+    configure.AddInMemoryCommandDispatchers();
+    configure.AddInMemoryQueryDispatchers();
+    configure.AddInMemoryEventDispatchers();
 });
 
 var app = builder.Build();
 
 app.UseOptimum(configure =>
 {
-    configure.UseApiEndpoints(async endpoints =>
-    {
-        await endpoints.MapGet<ServiceHealthRequest, ServiceHealthResponse>("/health");
-        await endpoints.MapPost<ServiceHealthRequest, ServiceHealthResponse>("/health-post/{status}");
-
-        await endpoints.MapPostCommand<SendLogCommand>("send");
-    });
+    configure.UseEndpoints(async endpoints => endpoints
+        .MapGet<ServiceHealthRequest, ServiceHealthResponse>("/health")
+        .MapPost<ServiceHealthRequest, ServiceHealthResponse>("/health-post/{status}"));
 });
 
 app.Run();

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Optimum.WebApi\Optimum.WebApi.csproj" />
+      <ProjectReference Include="..\Optimum.CQRS\Optimum.CQRS.csproj" />
+    </ItemGroup>
+
+</Project>

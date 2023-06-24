@@ -12,7 +12,7 @@ public class CommandDispatcher : ICommandDispatcher
         _serviceProvider = serviceProvider;
     }
 
-    public async Task SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default) where TCommand : ICommand
+    public async Task DispatchAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default) where TCommand : ICommand
     {
         var handler = _serviceProvider.GetRequiredService<ICommandHandler<TCommand>>();
         await handler.HandleAsync(command, cancellationToken);
